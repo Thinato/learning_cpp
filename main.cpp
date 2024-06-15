@@ -2,35 +2,53 @@
 
 using namespace std;
 
-void foo() {
-	cout << "you called me!" << endl;
-	return;
-}
+class Vertex {
+	float x, y, z;
 
-void foo(int bar) {
-	cout << "you called me, but with an arg of " << bar << endl;
-	return;
-}
+	public:
+	Vertex() {
+		cout << "you have created a class Vertex" << endl;
+
+	}
+
+	public:
+	void setX(float newX){
+		x = newX;
+	}
+
+	float getX() {
+		return x;
+	}
+};
 
 
-void print(const char *str) {
-	cout << "log: " << str << endl;
-}
+struct VertexStruct {
+	// all members of a struct
+	// are public by default
+	float x, y, z;
 
-void print(int i) {
-	cout << "log: " << i << endl;
-}
+	void create(float newX, float newY, float newZ) {
+		x = newX;
+		y = newY;
+		z = newZ;
+	}
+};
 
-void print(float f) {
-	cout << "log: " << f << endl;
-}
+
 
 int main() {
-	cout << "Hello World!" << endl;
-	foo();
-	foo(123);
-	print("hello again!");
-	print(822);
-	print(9.23f);
+	Vertex v;
+	VertexStruct vs;
+
+	vs.create(1.2f, 3.4f, 5.9f);
+
+	cout << "struct x: " << vs.x << endl;
+	cout << "struct y: " << vs.y << endl;
+	cout << "struct z: " << vs.z << endl;
+
+	v.setX(9.8f);
+
+	cout << "X of vertex: " << v.getX() << endl;
+
 	return 0;
 }
